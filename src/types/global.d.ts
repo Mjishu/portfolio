@@ -7,6 +7,12 @@ declare global {
         dateEnded: Date | string;
         image_src: string;
     };
+
+    type Tags = {
+        name: string;
+        icon_src: string;
+        iconFirst: boolean;
+    };
 }
 
 export {};
