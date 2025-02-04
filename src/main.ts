@@ -52,9 +52,9 @@ export class CreateTemplate {
         createdProject.innerHTML = `
         <div>
             <h4 class="project-name">${project.title}</h4>
-            <img class="project-image" alt="project-image" src=${'/images/' + project.image_src}/>
+            <img class="project-image" src=${'/images/' + project.image_src} alt="project-image"/>
           </div>
-          <div>
+          <div class="project-text-div">
             <p class="project-description">${project.description}</p>
             <p class="project-stack">${this._technologiesToString(project.technologies)}</p>
             <p class="project-dates">From | ${project.dateStarted} To ${project.dateEnded}</p>
