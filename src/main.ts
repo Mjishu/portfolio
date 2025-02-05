@@ -35,7 +35,7 @@ export class CreateTemplate {
         }
         this._createLanguageCarousel(false);
         this._createLanguageCarousel(true);
-        this._createAboutMe('Joshua', 'this is a place holder for now');
+        this._createAboutMe('Joshua', "colpeanje@gmail.com",  'Lorem ipsum dolor sit amet consectetur. Arcu euismod enim dolor convallis proin pulvinar. Nullam maecenas egestas tellus nunc viverra morbi. Erat iaculis metus lorem dictum. Neque feugiat egestas interdum euismod aenean.');
         this._linkTags();
     }
 
@@ -52,7 +52,7 @@ export class CreateTemplate {
         createdProject.innerHTML = `
         <div>
             <h4 class="project-name">${project.title}</h4>
-            <img class="project-image" src=${'/images/' + project.image_src} alt="project-image"/>
+            <img class="project-image" src=${'public/images/' + project.image_src} alt="project-image"/>
           </div>
           <div class="project-text-div">
             <p class="project-description">${project.description}</p>
@@ -65,35 +65,40 @@ export class CreateTemplate {
 
     _createTab() {
         this.tabSelector.innerHTML = `
-        <a class="current-tab tabs">HOME<a/>
-        <a class="tabs" >PROJECTS<a/>
-        <a class="tabs" >WHO AM I?<a/>
-        <a class="tabs" >CONTACT<a/>
+        <a href="#intro" class="current-tab tabs">HOME<a/>
+        <a href="#projects" class="tabs" >PROJECTS<a/>
+        <a href="#about-me" class="tabs" >WHO AM I?<a/>
+        <a href="#contact" class="tabs" >CONTACT<a/>
       `;
     }
 
-    _createAboutMe(name: string, description: string) {
+    _createAboutMe(name: string, email:string, description: string) {
         this.aboutMeSelector.innerHTML = `
         <div class="about-globe">
         </div>
         <div class="about-text">  
-          <h2>${name}</h2>
-          <p>${description}</p>
-        </div>
-      `;
+          <h2 class="about-name">${name}</h2>
+          <p class="about-description">${description}</p>
+          </div>
+          `;
+        //   <p class="about-email">${email}</p>
     }
 
     _linkTags() {
+        const tagParent = document.createElement("div");
+        tagParent.className = "tag-parent";
         for (const item of this.tags) {
-            const tag = document.createElement('div');
+            const tag = document.createElement('button');
+            const pathToIcon = `public/icons/${item.icon_src}`
             tag.className = 'tag';
             tag.innerHTML = `
-              ${item.iconFirst ? `<img class="tag-icon" src=${'/icons/' + item.icon_src} alt="social-tag"/>` : ''}
+              ${item.iconFirst ? `<img class="tag-icon" src=${pathToIcon} alt="tag"/>` : ''}
               <p class="tag-name">${item.name}</p>
-              ${!item.iconFirst ? `<img class="tag-icon" src=${'/icons/' + item.icon_src} alt="social-tag"/>` : ''}
+              ${!item.iconFirst ? `<img class="tag-icon" src=${pathToIcon} alt="tag"/>` : ''}
           `;
-            this.contactSelector.appendChild(tag);
+            tagParent.appendChild(tag);
         }
+        this.contactSelector.appendChild(tagParent);
     }
 
     _createLanguageCarousel(reverse: boolean) {
@@ -125,6 +130,8 @@ export class CreateTemplate {
     }
 }
 
+//   public/icons/email-light.svg
+
 const projects: Project[] = [
     {
         title: "Poke' Find",
@@ -143,7 +150,6 @@ const projects: Project[] = [
         dateEnded: new Date('2024/08/04'),
     },
 ];
-
 const tags: Tags[] = [
     {
         icon_src: 'github-light.svg',
