@@ -35,7 +35,11 @@ export class CreateTemplate {
         }
         this._createLanguageCarousel(false);
         this._createLanguageCarousel(true);
-        this._createAboutMe('Joshua', "colpeanje@gmail.com",  'Lorem ipsum dolor sit amet consectetur. Arcu euismod enim dolor convallis proin pulvinar. Nullam maecenas egestas tellus nunc viverra morbi. Erat iaculis metus lorem dictum. Neque feugiat egestas interdum euismod aenean.');
+        this._createAboutMe(
+            'Joshua',
+            'colpeanje@gmail.com',
+            'Lorem ipsum dolor sit amet consectetur. Arcu euismod enim dolor convallis proin pulvinar. Nullam maecenas egestas tellus nunc viverra morbi. Erat iaculis metus lorem dictum. Neque feugiat egestas interdum euismod aenean.',
+        );
         this._linkTags();
     }
 
@@ -72,7 +76,7 @@ export class CreateTemplate {
       `;
     }
 
-    _createAboutMe(name: string, email:string, description: string) {
+    _createAboutMe(name: string, email: string, description: string) {
         this.aboutMeSelector.innerHTML = `
         <div class="about-globe">
         </div>
@@ -85,11 +89,11 @@ export class CreateTemplate {
     }
 
     _linkTags() {
-        const tagParent = document.createElement("div");
-        tagParent.className = "tag-parent";
+        const tagParent = document.createElement('div');
+        tagParent.className = 'tag-parent';
         for (const item of this.tags) {
             const tag = document.createElement('button');
-            const pathToIcon = `public/icons/${item.icon_src}`
+            const pathToIcon = `public/icons/${item.icon_src}`;
             tag.className = 'tag';
             tag.innerHTML = `
               ${item.iconFirst ? `<img class="tag-icon" src=${pathToIcon} alt="tag"/>` : ''}

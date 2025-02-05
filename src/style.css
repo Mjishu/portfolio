@@ -76,6 +76,10 @@ a {
     padding: 0 11rem;
 }
 
+#intro {
+    height: 100vh;
+}
+
 #intro-span {
     color: hsl(var(--primary-color));
     border: none;
@@ -84,6 +88,8 @@ a {
 }
 
 #tab {
+    position: absolute;
+    bottom: 0;
     padding: none;
     margin: none;
     display: flex;
@@ -97,7 +103,9 @@ a {
     font-size: var(--medium-small-font-size);
     width: fit-content;
     font-weight: 600;
-    transition: 250ms ease-in color, 200ms ease-out opacity;
+    transition:
+        250ms ease-in color,
+        200ms ease-out opacity;
 }
 
 .tabs:hover {
@@ -242,7 +250,9 @@ a {
     justify-content: center;
     background: transparent;
     font-style: inherit;
-    transition: 300ms ease-in-out background, 325ms ease-in-out color;
+    transition:
+        300ms ease-in-out background,
+        325ms ease-in-out color;
 }
 
 .tag:hover {
@@ -262,7 +272,7 @@ a {
 }
 
 .about-globe {
-    width: 39rem ;
+    width: 39rem;
     height: 39rem;
     background: hsl(var(--secondary-color));
     border: none;
@@ -270,7 +280,9 @@ a {
 }
 
 .about-description {
-    width: 32.6875rem
+    width: 29.6875rem;
+    font-size: var(--small-font-size);
+    font-weight: 200;
 }
 
 #about-me {
@@ -279,7 +291,9 @@ a {
     margin-left: 4rem;
     display: flex;
     flex-direction: row;
+    align-items: cent;
+    justify-content: center;
     gap: 6.5rem;
     position: relative;
+    gap: 20%;
 }
-
