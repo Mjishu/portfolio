@@ -101,15 +101,15 @@ export class CreateTemplate {
         carousel.className = 'carousel';
         if (!reverse) {
             carousel.innerHTML = this.languages
-                .map((element) => {
-                    return `<p class="carousel-lang">${element}</p>`;
+                .map((element, index) => {
+                    return `<p class="carousel-lang lang-${index} ${reverse ? 'carousel-lang-lr' : 'carousel-lang-rl'}">${element}</p>`;
                 })
                 .join(' ');
         } else if (reverse) {
             carousel.innerHTML = this.languages
                 .reverse()
-                .map((element) => {
-                    return `<p class="carousel-lang">${element}</p>`;
+                .map((element, index) => {
+                    return `<p class="carousel-lang lang-${index} ${reverse ? 'carousel-lang-lr' : 'carousel-lang-rl'}">${element}</p>`;
                 })
                 .join(' ');
         }
