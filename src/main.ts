@@ -56,7 +56,7 @@ export class CreateTemplate {
               image_left == true
                   ? `<div>
             <h4 class="project-name">${project.title}</h4>
-            <img class="project-image" src=${'/images/' + project.image_src} alt="project-image"/>
+            <img class="project-image" src=${'public/images/' + project.image_src} alt="project-image"/>
           </div>`
                   : ''
           }
@@ -69,7 +69,7 @@ export class CreateTemplate {
               image_left == false
                   ? `<div>
             <h4 class="project-name name-right">${project.title}</h4>
-            <img class="project-image" src=${'/images/' + project.image_src} alt="project-image"/>
+            <img class="project-image" src=${'public/images/' + project.image_src} alt="project-image"/>
           </div>`
                   : ''
           }
@@ -103,7 +103,7 @@ export class CreateTemplate {
         tagParent.className = 'tag-parent';
         for (const item of this.tags) {
             const tag = document.createElement('button');
-            const pathToIcon = `/icons/${item.icon_src}`;
+            const pathToIcon = `public/icons/${item.icon_src}`;
             tag.className = 'tag';
             tag.innerHTML = `
               ${item.iconFirst ? `<img class="tag-icon" src=${pathToIcon} alt="tag"/>` : ''}
