@@ -37,7 +37,6 @@ export class CreateTemplate {
         this._createLanguageCarousel(true);
         this._createAboutMe(
             'Joshua',
-            'colpeanje@gmail.com',
             'Lorem ipsum dolor sit amet consectetur. Arcu euismod enim dolor convallis proin pulvinar. Nullam maecenas egestas tellus nunc viverra morbi. Erat iaculis metus lorem dictum. Neque feugiat egestas interdum euismod aenean.',
         );
         this._linkTags();
@@ -88,7 +87,7 @@ export class CreateTemplate {
       `;
     }
 
-    _createAboutMe(name: string, email: string, description: string) {
+    _createAboutMe(name: string, description: string) {
         this.aboutMeSelector.innerHTML = `
         <div class="about-globe">
         </div>
