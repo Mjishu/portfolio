@@ -31,7 +31,7 @@ export class CreateTemplate {
         this._createIntro();
         this._createTab();
         for (let item = 0; item < this._projects.length; item++) {
-            this._createProjects(this._projects[item]);
+            this._createProjects(this._projects[item], item % 2 === 0 ? true : false);
         }
         this._createLanguageCarousel(false);
         this._createLanguageCarousel(true);
@@ -49,20 +49,32 @@ export class CreateTemplate {
         `;
     }
 
-    _createProjects(project: Project) {
+    _createProjects(project: Project, image_left: boolean) {
         const createdProject = document.createElement('div');
         createdProject.className = 'project';
         console.log('/images/' + project.image_src);
         createdProject.innerHTML = `
-        <div>
+          ${
+              image_left == true
+                  ? `<div>
             <h4 class="project-name">${project.title}</h4>
             <img class="project-image" src=${'public/images/' + project.image_src} alt="project-image"/>
-          </div>
+          </div>`
+                  : ''
+          }
           <div class="project-text-div">
             <p class="project-description">${project.description}</p>
             <p class="project-stack">${this._technologiesToString(project.technologies)}</p>
-            <p class="project-dates">From | ${project.dateStarted} To ${project.dateEnded}</p>
+            <p class="project-dates">From | ${this._updateDateStyle(project.dateStarted)} To ${this._updateDateStyle(project.dateEnded)}</p>
           </div>
+          ${
+              image_left == false
+                  ? `<div>
+            <h4 class="project-name name-right">${project.title}</h4>
+            <img class="project-image" src=${'public/images/' + project.image_src} alt="project-image"/>
+          </div>`
+                  : ''
+          }
         `;
         this.projectsSelector.appendChild(createdProject);
     }
@@ -103,6 +115,14 @@ export class CreateTemplate {
             tagParent.appendChild(tag);
         }
         this.contactSelector.appendChild(tagParent);
+    }
+
+    _updateDateStyle(date: Date | string): Date | string {
+        if (typeof date === 'string') return 'Now';
+
+        const split = date.toString().split(' ').slice(1, 4);
+
+        return split.join(' ');
     }
 
     _createLanguageCarousel(reverse: boolean) {
