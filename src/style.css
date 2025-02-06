@@ -39,6 +39,8 @@ body::before {
     position: fixed;
     top: 0;
     left: 0;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100vh;
     min-height: 100%;
@@ -69,7 +71,7 @@ a {
 
 @keyframes indicateScroll {
     to {
-        bottom: 25px;
+        bottom: 125px;
     }
 }
 
@@ -81,7 +83,7 @@ a {
     border: none;
     position: absolute;
     right: 2rem;
-    bottom: 75px;
+    bottom: 175px;
     animation-name: indicateScroll;
     animation-duration: 2s;
     animation-timing-function: ease-in-out;
@@ -105,7 +107,7 @@ a {
 
 #tab {
     position: absolute;
-    bottom: 0;
+    bottom: 10rem;
     padding: none;
     margin: none;
     display: flex;
@@ -116,7 +118,7 @@ a {
 }
 
 .tabs {
-    font-size: var(--medium-small-font-size);
+    font-size: var(--medium-font-size);
     width: fit-content;
     font-weight: 600;
     transition:
@@ -134,11 +136,17 @@ a {
     font-size: var(--medium-font-size);
 }
 
+#projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .project {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    width: 65rem;
+    gap: 12rem;
+    width: 75rem;
     position: relative;
 }
 
@@ -192,6 +200,7 @@ a {
 .carousel-lang {
     margin: 0;
     font-size: var(--medium-small-font-size);
+    font-family: var(--primary-font);
     font-weight: 700;
     white-space: nowrap;
     width: 15rem;
@@ -305,6 +314,10 @@ a {
     border-radius: 50%;
 }
 
+.about-name {
+    font-size: var(--medium-font-size);
+}
+
 .about-description {
     width: 29.6875rem;
     font-size: var(--small-font-size);
@@ -322,4 +335,21 @@ a {
     gap: 6.5rem;
     position: relative;
     gap: 20%;
+}
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.email-footer {
+    padding: 0;
+    margin: 0;
+    font-size: var(--small-font-size);
+    color: hsl(var(--secondary-color));
+    font-weight: 400;
+    text-align: center;
 }

@@ -12,6 +12,7 @@ declare global {
         name: string;
         icon_src: string;
         iconFirst: boolean;
+        url: string;
     };
 }
 

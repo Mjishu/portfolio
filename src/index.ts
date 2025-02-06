@@ -38,8 +38,8 @@ export class CreateTemplate {
         this._createLanguageCarousel(false);
         this._createLanguageCarousel(true);
         this._createAboutMe(
-            'Joshua',
-            'Lorem ipsum dolor sit amet consectetur. Arcu euismod enim dolor convallis proin pulvinar. Nullam maecenas egestas tellus nunc viverra morbi. Erat iaculis metus lorem dictum. Neque feugiat egestas interdum euismod aenean.',
+            'Joshua Colpean',
+            'I have a passion for learning why things work and how to use them in different situations, my first adventure started with web development and now I am learning how to implement Machine Learning into these technologies!',
         );
         this._linkTags();
     }
@@ -105,6 +105,7 @@ export class CreateTemplate {
         tagParent.className = 'tag-parent';
         for (const item of this.tags) {
             const tag = document.createElement('button');
+            tag.onclick = () => this._openUrl(item.url);
             const pathToIcon = BASE_URL + `icons/${item.icon_src}`;
             tag.className = 'tag';
             tag.innerHTML = `
@@ -114,7 +115,14 @@ export class CreateTemplate {
           `;
             tagParent.appendChild(tag);
         }
-        this.contactSelector.appendChild(tagParent);
+        const email = document.createElement('h6');
+        email.className = 'email-footer';
+        email.innerText = 'colpeanje@gmail.com';
+        this.contactSelector.append(tagParent, email);
+    }
+
+    _openUrl(url: string) {
+        window.open(url);
     }
 
     _updateDateStyle(date: Date | string): Date | string {
@@ -179,16 +187,19 @@ const tags: Tags[] = [
         icon_src: 'github-light.svg',
         name: 'Github',
         iconFirst: true,
+        url: 'https://github.com/mjishu',
     },
     {
         icon_src: 'linkedin-light.svg',
         name: 'Linked',
         iconFirst: false,
+        url: 'https://www.linkedin.com/in/joshua-c-64a36b209/',
     },
     {
         icon_src: 'email-light.svg',
         name: 'Email',
         iconFirst: true,
+        url: 'mailto:?to=colpeanje@gmail.com',
     },
 ];
 
